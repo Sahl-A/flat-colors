@@ -4,19 +4,31 @@ import './ColorBox.css';
 
 class ColorBox extends Component {
     state = {
-        copiedColor: '',
         copied: false,
+    }
+
+    clipBoardCopy = () => {
+        this.setState({copied: true});
+        setTimeout(() => {
+            this.setState({copied: false})
+        }, 1000);
+        
     }
 
     render() {
         const {name, color} = this.props;
-        console.log(this.state.copiedColor)
+        const {copied} = this.state;
         return(
             
                 <div style={{background: `${color}`}} className="ColorBox">
+                    <div style={{background: `${color}`}} className={`copy-overlay ${copied && 'show'}`}></div>
+                    <div className={`copy-msg ${copied && 'show'}`}>
+                        <h1>Copied!</h1>
+                        <p>{color}</p>
+                    </div>
                     <span className="ColorBox-name">{name}</span>
                     <span className="ColorBox-more">More</span>
-                    <CopyToClipboard text={color} >
+                    <CopyToClipboard text={color} onCopy={this.clipBoardCopy}>
                         <span className="ColorBox-copy">Copy</span>
                     </CopyToClipboard>
                 </div>
