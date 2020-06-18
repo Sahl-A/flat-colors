@@ -1,0 +1,50 @@
+.Navbar {
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.Navbar-title {
+    padding: .5rem 1rem;
+    background: rgba(0, 0, 0, .1);
+    margin: 0 1rem 0 0;
+    font-weight: 300;
+    font-size: 1.5rem;
+    font-family: 'Roboto';
+    text-decoration: none;
+    color: inherit;
+}
+
+    
+.Slider {
+    width: 19rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Slider p {
+    display: inline-block;
+    width: 8rem;
+}
+
+.rc-slider-handle,
+.rc-slider-handle:active,
+.rc-slider-handle:hover,
+.rc-slider-handle:focus {
+    width: 14px;
+    height: 14px;
+    background: green;
+    border: green;
+    outline: none;
+    box-shadow: none;
+    margin-top: -4px;
+}
+
+.rc-slider-track {
+    background: transparent;
+}
+
+.rc-slider-rail {
+    height: 8px;
+}
