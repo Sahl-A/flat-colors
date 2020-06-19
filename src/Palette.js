@@ -18,6 +18,7 @@ class Pallette extends Component {
     }
 
     render() {
+        console.log(this.props)
         const {colors, paletteName, emoji} = this.props;
         const {level, colorFormat} = this.state;
         const colorBox = colors[level].map(color => (
