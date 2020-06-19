@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+// Import from rc slider library
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
+// import css after the library to override its styles
 import './Navbar.css';
-
 // select imports from material ui
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -10,6 +11,8 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Snackbar from '@material-ui/core/Snackbar';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
+// import route Links
+import { Link } from 'react-router-dom';
 
 
 class Navbar extends Component {
@@ -37,7 +40,7 @@ class Navbar extends Component {
         const {level, onSliderChange} = this.props;
         return(
             <nav className="Navbar">
-                <a href="/" className="Navbar-title">reactcolorpicker</a>
+                <Link to="/" className="Navbar-title">reactcolorpicker</Link>
                 <div className="Slider">
                     <p>level: {level}</p>
                     <Slider 
