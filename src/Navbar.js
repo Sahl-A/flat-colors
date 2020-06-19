@@ -6,20 +6,31 @@ import './Navbar.css';
 // select imports from material ui
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
-
+// snack bar imports from material ui
+import Snackbar from '@material-ui/core/Snackbar';
+import IconButton from '@material-ui/core/IconButton';
+import CloseIcon from '@material-ui/icons/Close';
 
 
 class Navbar extends Component {
 
     state = {
         colorFormat: 'hex',
+        snackBarOpen: false,
     }
 
     // Event Handlers
     // select event handler on change
     handleChange = (e) => {
-        this.setState({colorFormat: e.target.value});
+        this.setState({
+            colorFormat: e.target.value,
+            snackBarOpen: true,
+        });
         this.props.colorFormatChange(e.target.value);
+    }
+
+    closeSnackBarHandle = () => {
+        this.setState({snackBarOpen: false})
     }
 
     render() {
@@ -47,6 +58,21 @@ class Navbar extends Component {
                             <MenuItem value={'rgba'}>rgba(255,255,255,1)</MenuItem>
                     </Select>
                 </div>
+                <Snackbar
+                    anchorOrigin={{
+                        vertical: 'bottom',
+                        horizontal: 'left',
+                        }}
+                    open={this.state.snackBarOpen}
+                    autoHideDuration={2000}
+                    onClose={this.closeSnackBarHandle}
+                    message="Color format has been changed succesfully!!"
+                    action={
+                        <IconButton size="small" aria-label="close" color="inherit" onClick={this.closeSnackBarHandle}>
+                            <CloseIcon fontSize="small" />
+                        </IconButton>
+                    }
+                />
             </nav>
         )
     }
