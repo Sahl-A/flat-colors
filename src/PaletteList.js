@@ -9,7 +9,7 @@ const styles = {
         height: '100%',
     },
     root: {
-        maxWidth: "45rem",
+        maxWidth: "50rem",
         margin: "0 auto",
     },
     nav: {
@@ -20,9 +20,16 @@ const styles = {
     },
     miniPalettes: {
         display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))',
-        gridAutoRows: '150px',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+        gridAutoRows: 'minmax(150px, max-content)',
         gridGap: '3rem',
+    },
+    miniPalette: {
+        textDecoration: 'none',
+        color: '#000',
+        fontSize: '15px',
+        fontWeight: '600',
+        letterSpacing: '.55px',
     }
   };
 
@@ -31,7 +38,7 @@ class PaletteList extends Component {
     render() {
         const { palettes , classes } = this.props;
         const miniPalettes = palettes.map(palette => (
-            <Link to={`/palette/${palette.id}`}><MiniPalette /></Link>
+            <Link className={classes.miniPalette} key={palette.id} to={`/palette/${palette.id}`}><MiniPalette {...palette}/></Link>
         ))
         return(
             <div className={classes.container}>
