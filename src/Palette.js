@@ -1,3 +1,4 @@
+// To be done ==> redirect when accessing unavailable palette
 import React, { Component } from 'react';
 import './Palette.css';
 import ColorBox from './ColorBox';
@@ -26,6 +27,8 @@ class Pallette extends Component {
                 key={color.id} 
                 name={color.name} 
                 color={color[colorFormat]}
+                colorsArr={colors}
+                showMore
                 singleColorPaletteURL={`/palette/${id}/${color.name.split(' ')[0]}`} />
         ))
         return(

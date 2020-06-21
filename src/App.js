@@ -23,7 +23,7 @@ function App() {
         <Route 
           exact 
           path="/palette/:paletteId/:colorId" 
-          render={(routerProps)=> <SingleColorPalette />} />
+          render={(routerProps)=> <SingleColorPalette {...routerProps} colorsArr={generatePalette(findPalette(routerProps.match.params.paletteId))}/>} />
 
         <Route 
           exact 

@@ -19,7 +19,7 @@ class ColorBox extends Component {
 
     render() {
         console.log(`[ColorBox] props ==>`, this.props)
-        const {name, color, singleColorPaletteURL} = this.props;
+        const {name, color, singleColorPaletteURL, colorsArr, showMore} = this.props;
         const {copied} = this.state;
         return(
             <div style={{background: `${color}`}} className="ColorBox">
@@ -29,11 +29,12 @@ class ColorBox extends Component {
                     <p>{color}</p>
                 </div>
                 <span className="ColorBox-name">{name}</span>
-                <Link 
+                { showMore && <Link 
                     className="ColorBox-more"
+                    colorsArr={colorsArr}
                     to={`${singleColorPaletteURL}`} >
                         More
-                </Link>
+                </Link>}
                 <CopyToClipboard text={color} onCopy={this.clipBoardCopy}>
                     <span className="ColorBox-copy">Copy</span>
                 </CopyToClipboard>
