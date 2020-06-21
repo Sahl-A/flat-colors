@@ -4,6 +4,7 @@ import './App.css';
 import seedColors from './seedColors';
 import Pallette from './Palette';
 import PaletteList from './PaletteList';
+import SingleColorPalette from './SingleColorPalette';
 import { generatePalette } from './colorHelper';
 
 function App() {
@@ -18,6 +19,11 @@ function App() {
           exact 
           path="/" 
           render={(routerProps)=> <PaletteList routerProps={routerProps} palettes={seedColors}/>} />
+
+        <Route 
+          exact 
+          path="/palette/:paletteId/:colorId" 
+          render={(routerProps)=> <SingleColorPalette />} />
 
         <Route 
           exact 
