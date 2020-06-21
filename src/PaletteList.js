@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import { withStyles } from '@material-ui/styles';
 import MiniPalette from './MiniPalette';
 
@@ -25,20 +24,29 @@ const styles = {
         gridGap: '3rem',
     },
     miniPalette: {
-        textDecoration: 'none',
         color: '#000',
         fontSize: '15px',
         fontWeight: '600',
         letterSpacing: '.55px',
+        cursor: 'pointer',
     }
   };
 
 class PaletteList extends Component {
 
+    miniPaletteHandler = (id) => {
+        this.props.routerProps.history.push(`/palette/${id}`)
+    }
+
     render() {
         const { palettes , classes } = this.props;
         const miniPalettes = palettes.map(palette => (
-            <Link className={classes.miniPalette} key={palette.id} to={`/palette/${palette.id}`}><MiniPalette {...palette}/></Link>
+            <div 
+                className={classes.miniPalette} 
+                key={palette.id}
+                onClick={()=>this.miniPaletteHandler(palette.id)} >
+                    <MiniPalette {...palette}/>
+            </div>
         ))
         return(
             <div className={classes.container}>
