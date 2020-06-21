@@ -26,7 +26,9 @@
     height: 30px;
     width: 70px;
     line-height: 30px;
-    cursor: pointer;
+    margin-bottom: .2rem;
+    text-decoration: none;
+    color: inherit;
 }
 
 .ColorBox-copy {

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import './ColorBox.css';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 
@@ -27,7 +28,11 @@ class ColorBox extends Component {
                     <p>{color}</p>
                 </div>
                 <span className="ColorBox-name">{name}</span>
-                <span className="ColorBox-more">More</span>
+                <Link 
+                    className="ColorBox-more"
+                    to={`/`} >
+                        More
+                </Link>
                 <CopyToClipboard text={color} onCopy={this.clipBoardCopy}>
                     <span className="ColorBox-copy">Copy</span>
                 </CopyToClipboard>
