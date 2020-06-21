@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import ColorBox from './ColorBox';
+import Navbar from './Navbar';
+import Footer from './Footer';
 
 class SingleColorPalette extends Component {
     state = {
@@ -17,19 +19,28 @@ class SingleColorPalette extends Component {
         return colorShades.slice(1);
     }
 
+    colorFormatChange = (format) => {
+        this.setState({colorFormat: format})
+    }
+
     render() {
         console.log(`SingleColorPalette ==>`, this._colorsArr, this._currColor, this.getShadedOfColor());
         const {colorFormat} = this.state;
+        const colorBoxes = this.getShadedOfColor().map(color => (
+            <ColorBox 
+                key={color.name} 
+                name={color.name} 
+                color={color[colorFormat]}
+            />
+        ))
         return(
-            this.getShadedOfColor().map(color => (
-                <ColorBox 
-                    key={color.name} 
-                    name={color.name} 
-                    color={color[colorFormat]}
-                    // colorsArr={colors}
-                    // singleColorPaletteURL={`/palette/${id}/${color.name.split(' ')[0]}`}
-                />
-            ))
+            <div className="Palette">
+                <Navbar colorFormatChange={this.colorFormatChange} />
+                <div className='Palette-colors'>
+                    {colorBoxes}
+                </div>
+                <Footer paletteName={this._currColor} />
+            </div>
         )
     }
 }

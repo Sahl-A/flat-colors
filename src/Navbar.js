@@ -37,11 +37,11 @@ class Navbar extends Component {
     }
 
     render() {
-        const {level, onSliderChange} = this.props;
+        const {level, onSliderChange, showSlider} = this.props;
         return(
             <nav className="Navbar">
                 <Link to="/" className="Navbar-title">reactcolorpicker</Link>
-                <div className="Slider">
+                {showSlider && <div className="Slider">
                     <p>level: {level}</p>
                     <Slider 
                         defaultValue={level} 
@@ -49,7 +49,7 @@ class Navbar extends Component {
                         max={900} 
                         step={100} 
                         onChange={onSliderChange}/>
-                </div>
+                </div>}
                 <div className="select-container">
                     <Select 
                         className="select-item"

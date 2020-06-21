@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import './Palette.css';
 import ColorBox from './ColorBox';
 import Navbar from './Navbar';
+import Footer from './Footer';
 
 class Pallette extends Component {
     state = {
@@ -36,13 +37,11 @@ class Pallette extends Component {
                 <Navbar 
                     level={level} 
                     onSliderChange={this.onSliderChange}
-                    colorFormatChange={this.colorFormatChange} />     
+                    colorFormatChange={this.colorFormatChange}
+                    showSlider />     
 
                 <div className="Palette-colors">{colorBox}</div>
-                <footer className="Palette-footer">
-                    <span className="Palette-footer__name">{paletteName}</span>
-                    <span className="Palette-footer__emoji">{emoji}</span>
-                </footer>
+                <Footer paletteName={paletteName} emoji={emoji}/>
             </div>
         )
     }
