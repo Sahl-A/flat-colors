@@ -1,9 +1,20 @@
 // To be done ==> redirect when accessing unavailable palette
 import React, { Component } from 'react';
-import './Palette.css';
+import { withStyles } from '@material-ui/styles';
 import ColorBox from './ColorBox';
 import Navbar from './Navbar';
 import Footer from './Footer';
+
+const styles = {
+    Palette: {
+        height: '100vh',
+        display: 'flex',
+        flexDirection: 'column',
+    },
+    colors: {
+        height: '90%',
+    },
+}
 
 
 class Pallette extends Component {
@@ -21,8 +32,7 @@ class Pallette extends Component {
     }
 
     render() {
-        console.log(`[Palette] props ==>`, this.props)
-        const {colors, paletteName, emoji, id} = this.props;
+        const {colors, paletteName, emoji, id, classes} = this.props;
         const {level, colorFormat} = this.state;
         const colorBox = colors[level].map(color => (
             <ColorBox 
@@ -35,18 +45,18 @@ class Pallette extends Component {
                 singleColorPaletteURL={`/palette/${id}/${color.name.split(' ')[0]}`} />
         ))
         return(
-            <div className="Palette">
+            <div className={classes.Palette}>
                 <Navbar 
                     level={level} 
                     onSliderChange={this.onSliderChange}
                     colorFormatChange={this.colorFormatChange}
                     showSlider />     
 
-                <div className="Palette-colors">{colorBox}</div>
+                <div className={classes.colors}>{colorBox}</div>
                 <Footer paletteName={paletteName} emoji={emoji}/>
             </div>
         )
     }
 }
 
-export default Pallette;
+export default withStyles(styles)(Pallette);
