@@ -1,36 +1,7 @@
 import React from 'react';
 import { withStyles } from '@material-ui/styles';
+import styles from './styles/MiniPaletteStyles';
 
-const styles = {
-    root: {
-        height: "100%",
-        background: "white",
-        borderRadius: '5px',
-        padding: '.7rem',
-        display: 'flex',
-        flexDirection: 'column',
-        overflow: 'hidden',
-    },
-    miniColorBoxes: {
-        marginBottom: '.3rem',
-        height: '90%',
-        borderRadius: '5px',
-        overflow: 'hidden',
-    },
-    miniBox: {
-        width: '20%',
-        height: '25%',
-        display: 'inline-block',
-        marginBottom: '-.25rem'
-
-    },
-    footer: {
-        display: 'flex',
-        justifyContent: 'space-between',
-        padding: '.2rem 0'
-        
-    }
-  };
 
 const MiniPalette = (props) => {
     const { classes, id, colors, emoji } = props;

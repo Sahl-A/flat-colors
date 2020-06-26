@@ -1,17 +1,7 @@
 import React from 'react';
 import { withStyles } from '@material-ui/styles';
+import styles from './styles/FooterStyles';
 
-const styles = {
-    root: {
-        height: '5vh',
-        display: 'flex',
-        justifyItems: 'center',
-        justifyContent: 'flex-end',
-    },
-    emoji: {
-        margin: '0 2rem 0 2rem',
-    }
-  };
 
 const Footer = (props) => {
     const {paletteName, emoji, classes} = props;
