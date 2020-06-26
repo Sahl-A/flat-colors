@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import ColorBox from './ColorBox';
 import Navbar from './Navbar';
 import Footer from './Footer';
@@ -9,7 +10,8 @@ class SingleColorPalette extends Component {
     }
 
     _colorsArr = this.props.colorsArr.colors;
-    _currColor = this.props.match.params.colorId
+    _currColor = this.props.match.params.colorId;
+    _currPalette = this.props.match.params.paletteId
 
     getShadedOfColor = () => {
         const colorShades = [];
@@ -31,13 +33,16 @@ class SingleColorPalette extends Component {
                 key={color.name} 
                 name={color.name} 
                 color={color[colorFormat]}
-            />
+                isSingleColorBox />
         ))
         return(
             <div className="Palette">
                 <Navbar colorFormatChange={this.colorFormatChange} />
                 <div className='Palette-colors'>
                     {colorBoxes}
+                    <div className="goBack SingleColorBox">
+                        <Link to={`/palette/${this._currPalette}`} className="ColorBox-copy go-back">go Back</Link>
+                    </div>
                 </div>
                 <Footer paletteName={this._currColor} />
             </div>

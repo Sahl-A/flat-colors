@@ -5,6 +5,7 @@ import ColorBox from './ColorBox';
 import Navbar from './Navbar';
 import Footer from './Footer';
 
+
 class Pallette extends Component {
     state = {
         level: '500',
@@ -30,6 +31,7 @@ class Pallette extends Component {
                 color={color[colorFormat]}
                 colorsArr={colors}
                 showMore
+                isSingleColorBox={false}
                 singleColorPaletteURL={`/palette/${id}/${color.name.split(' ')[0]}`} />
         ))
         return(
