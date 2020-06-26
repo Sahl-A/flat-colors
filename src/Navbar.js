@@ -1,19 +1,17 @@
 import React, { Component } from 'react';
-// Import from rc slider library
+import { withStyles } from '@material-ui/styles';
+import { Link } from 'react-router-dom';
 import Slider from 'rc-slider';
+
 import 'rc-slider/assets/index.css';
-// import css after the library to override its styles
-import './Navbar.css';
-// select imports from material ui
+import styles from './styles/NavbarStyles';
+
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
-// snack bar imports from material ui
+
 import Snackbar from '@material-ui/core/Snackbar';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
-// import route Links
-import { Link } from 'react-router-dom';
-
 
 class Navbar extends Component {
 
@@ -37,11 +35,11 @@ class Navbar extends Component {
     }
 
     render() {
-        const {level, onSliderChange, showSlider} = this.props;
+        const {level, onSliderChange, showSlider, classes} = this.props;
         return(
-            <nav className="Navbar">
-                <Link to="/" className="Navbar-title">reactcolorpicker</Link>
-                {showSlider && <div className="Slider">
+            <nav className={classes.Navbar}>
+                <Link to="/" className={classes.NavbarTitle}>reactcolorpicker</Link>
+                {showSlider && <div className={classes.Slider}>
                     <p>level: {level}</p>
                     <Slider 
                         defaultValue={level} 
@@ -50,9 +48,9 @@ class Navbar extends Component {
                         step={100} 
                         onChange={onSliderChange}/>
                 </div>}
-                <div className="select-container">
+                <div className={classes.selectContainer}>
                     <Select 
-                        className="select-item"
+                        className={classes.selectItem}
                         onChange={this.handleChange}
                         value={this.state.colorFormat} >
 
@@ -81,4 +79,4 @@ class Navbar extends Component {
     }
 }
 
-export default Navbar;
+export default withStyles(styles)(Navbar);
