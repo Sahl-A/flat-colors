@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import classNames from "classnames";
+import { ChromePicker } from 'react-color';
+import Button from '@material-ui/core/Button';
 import Drawer from '@material-ui/core/Drawer';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import classNames from "classnames";
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Divider from '@material-ui/core/Divider';
@@ -10,7 +12,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import { withStyles } from '@material-ui/core/styles';
 
-const drawerWidth = 240;
+const drawerWidth = 300;
 
 const styles = (theme) => ({
   root: {
@@ -120,23 +122,20 @@ class NewPaletteForm extends Component {
                         </IconButton>
                     </div>
                     <Divider />
-                    {/* <List>
-                        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-                            <ListItem button key={text}>
-                            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                            <ListItemText primary={text} />
-                            </ListItem>
-                        ))}
-                    </List> */}
-                    <Divider />
-                    {/* <List>
-                        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-                            <ListItem button key={text}>
-                            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                            <ListItemText primary={text} />
-                            </ListItem>
-                        ))}
-                    </List> */}
+                    <div>
+                        <Button variant="contained" color="secondary">
+                            Create Palette
+                        </Button>
+                        <Button variant="contained" color="primary">
+                            Random Color
+                        </Button>
+                    </div>
+                    <ChromePicker 
+                     color='purple'
+                     onChangeComplete={ newColor=> console.log(newColor) } />
+                    <Button variant="contained" color="primary">
+                        Add Color
+                    </Button>
             </Drawer>
             <main
                 className={classNames(classes.content, {
