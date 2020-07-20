@@ -12,6 +12,8 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import { withStyles } from '@material-ui/core/styles';
 
+import DraggableColorBox from './DraggableColorBox';
+
 const drawerWidth = 300;
 
 const styles = (theme) => ({
@@ -55,6 +57,7 @@ const styles = (theme) => ({
   },
   content: {
     flexGrow: 1,
+    height: 'calc(100vh - 36px)',
     padding: theme.spacing(3),
     transition: theme.transitions.create('margin', {
       easing: theme.transitions.easing.sharp,
@@ -158,9 +161,7 @@ class NewPaletteForm extends Component {
                 [classes.contentShift]: open,
                 })} >
                     <div className={classes.drawerHeader} />
-                    <ul>
-                        {colors.map(color => <li style={{backgroundColor: color}}>{color}</li>)}
-                    </ul>
+                    {colors.map(color => <DraggableColorBox color={color} />)}
             </main>
             </div>
         )
