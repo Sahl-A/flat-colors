@@ -5,6 +5,7 @@ import seedColors from './seedColors';
 import Pallette from './Palette';
 import PaletteList from './PaletteList';
 import SingleColorPalette from './SingleColorPalette';
+import NewPaletteForm from './NewPaletteForm';
 import { generatePalette } from './colorHelper';
 
 function App() {
@@ -15,6 +16,10 @@ function App() {
   return (
     <div className="App">
       <Switch>
+        <Route
+          exact
+          path="/Palette/new"
+          render={() => <NewPaletteForm />} />
         <Route 
           exact 
           path="/" 

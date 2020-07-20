@@ -8,10 +8,22 @@ export default {
         margin: "0 auto",
     },
     nav: {
-        margin: '2rem 0',
-        fontSize: '2rem',
-        cursor: 'pointer',
-        display: 'inline-block',
+        padding: '2rem 0',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        color: 'white',
+        
+        "& div": {
+            cursor: 'pointer',
+            fontWeight: 'bold',
+            fontSize: '2rem',
+        },
+        "& a": {
+            color: 'white',
+            paddingBottom: '5px',
+        },
+
     },
     miniPalettes: {
         display: 'grid',
