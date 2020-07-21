@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import classNames from "classnames";
+import { withStyles } from '@material-ui/core/styles';
 import { ChromePicker } from 'react-color';
 import Button from '@material-ui/core/Button';
 import Drawer from '@material-ui/core/Drawer';
@@ -10,7 +11,7 @@ import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import { withStyles } from '@material-ui/core/styles';
+import { ValidatorForm, TextValidator} from 'react-material-ui-form-validator';
 
 import DraggableColorBox from './DraggableColorBox';
 
@@ -78,8 +79,23 @@ class NewPaletteForm extends Component {
     state = {
         open: false,
         currColor: 'purple',
-        colors: ['purple', '#f4561f']
+        colors: [],
+        colorName: "",
     };
+
+    componentDidMount() {
+        // custom rule will have name 'isColorNameUnique'
+        ValidatorForm.addValidationRule('isColorNameUnique', value => {
+            if(this.state.colors.length !==0) return this.state.colors.every(item => item.name !== value)
+            return true
+        });
+
+        // custom rule will have name 'isColorUnique'
+        ValidatorForm.addValidationRule('isColorUnique', value => {
+            if(this.state.colors.length !==0) return this.state.colors.every(item => item.color !== this.state.currColor)
+            return true
+        });
+    }
 
     handleDrawerOpen = () => {
         this.setState({open: true});
@@ -94,8 +110,11 @@ class NewPaletteForm extends Component {
     };
 
     addNewColor = () => {
-        this.setState({ colors: [...this.state.colors, this.state.currColor] });
-        console.log(this.state.colors)
+        this.setState({ colors: [...this.state.colors, {color: this.state.currColor, name: this.state.colorName}] });
+    }
+
+    handleChange = (e) => {
+        this.setState({ colorName: e.target.value });
     }
 
     render() {
@@ -148,20 +167,36 @@ class NewPaletteForm extends Component {
                     <ChromePicker 
                         color={this.state.currColor}
                         onChangeComplete={ (newColor) => this.changeColor(newColor) } />
-                    <Button 
-                        variant="contained" 
-                        color="primary" 
-                        style={{backgroundColor: this.state.currColor}}
-                        onClick={this.addNewColor} >
-                        Add Color
-                    </Button>
+
+                    <ValidatorForm
+                        ref="form"
+                        onSubmit={this.addNewColor}
+                        onError={errors => console.log(errors)}>
+
+                            <TextValidator
+                                label="Color Name"
+                                onChange={this.handleChange}
+                                name="email"
+                                value={this.state.colorName}
+                                validators={['required', 'isColorNameUnique', 'isColorUnique']}
+                                errorMessages={['this field is required', 'Color name is used before', 'The Color is used before']}/>
+
+                    
+                            <Button 
+                                variant="contained" 
+                                color="primary" 
+                                style={{backgroundColor: this.state.currColor}}
+                                type='submit' >
+                                Add Color
+                            </Button>
+                    </ValidatorForm>
             </Drawer>
             <main
                 className={classNames(classes.content, {
                 [classes.contentShift]: open,
                 })} >
                     <div className={classes.drawerHeader} />
-                    {colors.map(color => <DraggableColorBox color={color} />)}
+                    {colors.map(color => <DraggableColorBox color={color.color} colorName={color.name} />)}
             </main>
             </div>
         )
