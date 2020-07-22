@@ -12,8 +12,9 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import { ValidatorForm, TextValidator} from 'react-material-ui-form-validator';
+import arrayMove from 'array-move';
 
-import DraggableColorBox from './DraggableColorBox';
+import SortableList from './SortableList';
 
 const drawerWidth = 300;
 
@@ -101,15 +102,15 @@ class NewPaletteForm extends Component {
         ValidatorForm.addValidationRule('isPaletteNameUnique', value => {
             return this.props.palettes.every(palette => palette.paletteName.toLowerCase() !== value.toLowerCase())
         });
-    }
+    };
 
     handleDrawerOpen = () => {
         this.setState({open: true});
-    }
+    };
 
     handleDrawerClose = () => {
         this.setState({open: false});
-    }
+    };
 
     changeColor = (newColor) => {
         this.setState({ currColor: newColor.hex });
@@ -117,11 +118,11 @@ class NewPaletteForm extends Component {
 
     addNewColor = () => {
         this.setState({ colors: [...this.state.colors, {color: this.state.currColor, name: this.state.colorName}], colorName: "" });
-    }
+    };
 
     handleChangeForm = (e) => {
         this.setState({ [e.target.name]: e.target.value });
-    }
+    };
 
     handleSavePalette = () => {
         const newPalette = {
@@ -131,11 +132,17 @@ class NewPaletteForm extends Component {
         };
         this.props.savePalette(newPalette);
         this.props.history.push('/')
-    }
+    };
 
     handleDeleteColor = (id) => {
         this.setState({colors: this.state.colors.filter(color => color.name !== id)})
-    }
+    };
+
+    onSortEnd = ({oldIndex, newIndex}) => {
+        this.setState(({colors}) => ({
+          colors: arrayMove(colors, oldIndex, newIndex),
+        }));
+    };
 
     render() {
         const {classes} = this.props;
@@ -237,12 +244,12 @@ class NewPaletteForm extends Component {
                 [classes.contentShift]: open,
                 })} >
                     <div className={classes.drawerHeader} />
-                    {colors.map(color => (
-                        <DraggableColorBox 
-                            color={color.color} 
-                            colorName={color.name}
-                            deleteColor={()=> this.handleDeleteColor(color.name)} />
-                    ))}
+                    <SortableList
+                        colors={colors}
+                        handleDeleteColor={this.handleDeleteColor}
+                        axis={'xy'}
+                        onSortEnd={this.onSortEnd}
+                    />
             </main>
             </div>
         )
