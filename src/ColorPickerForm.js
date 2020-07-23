@@ -54,16 +54,24 @@ class ColorPickerForm extends Component {
                             name="colorName"
                             value={this.state.colorName}
                             validators={['required', 'isColorNameUnique', 'isColorUnique']}
-                            errorMessages={['this field is required', 'Color name is used before', 'The Color is used before']}/>
-
-                
+                            errorMessages={['this field is required', 'Color name is used before', 'The Color is used before']} 
+                            variant="filled"
+                            style={{marginTop: '1rem'}}
+                        />
                         <Button 
                             variant="contained" 
                             color="primary" 
-                            style={{backgroundColor: isPaletteFull ? '#aaa': this.state.currColor}}
+                            style={{
+                                backgroundColor: isPaletteFull ? '#aaa': this.state.currColor,
+                                display: 'block',
+                                width: '100%',
+                                marginTop: '1rem',
+                                padding: '.5rem 0',
+                                fontSize: '1.4rem',
+                            }}
                             type='submit'
                             disabled={isPaletteFull} >
-                            {isPaletteFull ? 'Full Palette' : 'Add Color'}
+                                {isPaletteFull ? 'Full Palette' : 'Add Color'}
                         </Button>
                 </ValidatorForm>
             </React.Fragment>
