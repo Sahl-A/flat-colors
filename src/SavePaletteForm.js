@@ -46,8 +46,8 @@ addPaletteData = (data) => {
 }
 
   render() {
-      const { open, paletteName } = this.state;
-      const { classes } = this.props;
+    const { open, paletteName } = this.state;
+    const { classes } = this.props;
     return (
         <div>
           <Button style={{margin: '0 2rem 0 1rem'}} variant="contained" color="secondary" onClick={this.handleClickOpen}>
@@ -96,7 +96,7 @@ addPaletteData = (data) => {
             </ValidatorForm>
           </Dialog>
         </div>
-      );
+    );
   }
 }
 
