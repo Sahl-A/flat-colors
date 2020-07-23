@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { withStyles } from '@material-ui/styles';
 import MiniPalette from './MiniPalette';
 import styles from './styles/PaletteListStyles';
+import { green } from '@material-ui/core/colors';
+import Icon from '@material-ui/core/Icon';
 
 class PaletteList extends Component {
 
@@ -25,7 +27,10 @@ class PaletteList extends Component {
                 <div className={classes.root}>
                     <nav className={classes.nav}>
                         <div>Flat UI Colors</div>
-                        <Link to="/palette/new">Create Palette</Link>
+                        <div style={{fontSize: '1rem', display: 'flex', alignItems: 'center'}}>
+                            <Icon style={{ color: green[500], marginRight: '5px' }}>add_circle</Icon>
+                            <Link to="/palette/new">Create Palette</Link>
+                        </div>
                     </nav>
                     <div className={classes.miniPalettes}>
                         {miniPalettes}

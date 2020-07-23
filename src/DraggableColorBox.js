@@ -12,7 +12,7 @@ const DraggableColorBox = SortableElement((props) => {
             className={classes.root}
             style={{backgroundColor: color}} > 
                 <div className={classes.boxContent}>
-                    <span>{colorName}</span>
+                    <span style={{fontWeight: '300'}}>{colorName}</span>
                     <DeleteRounded onClick={deleteColor}/>
                 </div>
         </div>

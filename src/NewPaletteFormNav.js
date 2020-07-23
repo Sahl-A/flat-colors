@@ -18,6 +18,7 @@ class NewPaletteFormNav extends Component {
             <div>
                 <CssBaseline />
                 <AppBar
+                    color="transparent"
                     position="fixed"
                     className={classNames(classes.appBar, {
                     [classes.appBarShift]: open,
@@ -34,7 +35,7 @@ class NewPaletteFormNav extends Component {
                             </IconButton>
                             <h2>Create A Palette</h2>
                         </Toolbar>
-                        <Link to="/" style={{marginLeft: 'auto'}}>
+                        <Link to="/" style={{marginLeft: 'auto', textDecoration: 'none'}}>
                             <Button
                                 variant="contained" 
                                 color="secondary" 

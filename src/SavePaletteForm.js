@@ -50,7 +50,7 @@ addPaletteData = (data) => {
     const { classes } = this.props;
     return (
         <div>
-          <Button style={{margin: '0 2rem 0 1rem'}} variant="contained" color="secondary" onClick={this.handleClickOpen}>
+          <Button style={{margin: '0 2rem 0 1rem'}} variant="contained" color="primary" onClick={this.handleClickOpen}>
             Save
           </Button>
           <Dialog open={open === 'emoji'} onClose={this.handleClose} aria-labelledby="form-dialog-title">

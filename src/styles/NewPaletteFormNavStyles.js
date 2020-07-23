@@ -1,4 +1,6 @@
-const drawerWidth = 300;
+import { DRAWER_WIDTH as drawerWidth } from '../constants';
+
+
 export default function (theme) {
     return (
         {
@@ -14,6 +16,9 @@ export default function (theme) {
                 flexDirection: 'row',
                 justifyContent: 'space-between',
                 alignItems: 'center',
+              },
+              hide: {
+                display: 'none',
               },
               appBarShift: {
                 width: `calc(100% - ${drawerWidth}px)`,
