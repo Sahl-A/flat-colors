@@ -4,10 +4,12 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import { ValidatorForm, TextValidator} from 'react-material-ui-form-validator';
+import 'emoji-mart/css/emoji-mart.css'
+import { Picker } from 'emoji-mart'
 
 class SavePaletteForm extends Component {
     state = {
-        open: false,
+        open: '',
         paletteName: "",
     }
 
@@ -19,7 +21,7 @@ class SavePaletteForm extends Component {
     };
 
    handleClickOpen = () => {
-    this.setState({ open: true });
+    this.setState({ open: "paletteName" });
   };
 
   handleClose = () => {
@@ -30,21 +32,40 @@ class SavePaletteForm extends Component {
     this.setState({ [e.target.name]: e.target.value });
 };
 
+// When click on save palette button
+onSubmitForm = () => {
+    // To open the emoji dialog and close the form dialog
+    this.setState({open: 'emoji'});
+};
+
+// When picking up an emoji
+addPaletteData = (data) => {
+    const paletteData = {name: this.state.paletteName, emoji: data.native}
+    // Save Palette with paletteName and emoji
+    this.props.onSavePalette(paletteData)
+}
+
   render() {
       const { open, paletteName } = this.state;
-      const { classes, onSavePalette } = this.props;
+      const { classes } = this.props;
     return (
         <div>
           <Button style={{margin: '0 2rem 0 1rem'}} variant="contained" color="secondary" onClick={this.handleClickOpen}>
             Save
           </Button>
-          <Dialog open={open} onClose={this.handleClose} aria-labelledby="form-dialog-title">
+          <Dialog open={open === 'emoji'} onClose={this.handleClose} aria-labelledby="form-dialog-title">
+            <Picker 
+                set='apple'
+                onSelect={this.addPaletteData}
+                title='Pick the palette emoji' emoji='point_up' />
+          </Dialog>
+          <Dialog open={open === 'paletteName'} onClose={this.handleClose} aria-labelledby="form-dialog-title">
             <DialogTitle id="form-dialog-title">Choose a Palette Name</DialogTitle>
             <ValidatorForm
                 style={{flexDirection: 'column', padding: '1.5rem'}}
                 className={classes.form}
                 ref="form" 
-                onSubmit={() => onSavePalette(paletteName)}
+                onSubmit={this.onSubmitForm}
                 onError={errors => console.log(errors)}
             >
                 <DialogContentText>
