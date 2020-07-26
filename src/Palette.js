@@ -13,7 +13,7 @@ class Pallette extends Component {
     }
 
     onSliderChange = (level) => {
-        this.setState({level})
+        this.setState({level}) 
     }
 
     colorFormatChange = (colorFormat) => {

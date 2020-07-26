@@ -1,7 +1,7 @@
 export default {
     container: {
         background: 'lightblue',
-        height: '100%',
+        paddingBottom: '2.4rem',
     },
     root: {
         maxWidth: "50rem",
@@ -28,7 +28,7 @@ export default {
     miniPalettes: {
         display: 'grid',
         gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-        gridAutoRows: 'minmax(150px, max-content)',
+        gridAutoRows: 'minmax(170px, max-content)',
         gridGap: '3rem',
     },
     miniPalette: {

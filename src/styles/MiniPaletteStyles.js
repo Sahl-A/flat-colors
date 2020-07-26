@@ -3,10 +3,11 @@ export default {
         height: "100%",
         background: "white",
         borderRadius: '5px',
-        padding: '.7rem',
+        padding: '.7rem .7rem 0 .7rem',
         display: 'flex',
         flexDirection: 'column',
         overflow: 'hidden',
+        boxSizing: 'border-box',
         position: 'relative',
         "&:hover button": {
             opacity: 1,
@@ -15,10 +16,11 @@ export default {
         },
     },
     miniColorBoxes: {
-        marginBottom: '.3rem',
         height: '90%',
         borderRadius: '5px',
         overflow: 'hidden',
+        display: 'flex',
+        flexWrap: 'wrap',
     },
     miniBox: {
         width: '20%',
@@ -30,7 +32,7 @@ export default {
     footer: {
         display: 'flex',
         justifyContent: 'space-between',
-        padding: '.2rem 0'
+        padding: '.7rem 0'
         
     },
     deleteButton: {

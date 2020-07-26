@@ -1,9 +1,9 @@
 export default {
     Palette: {
-        height: '100vh',
+        height: '100%',
         display: 'flex',
         flexDirection: 'column',
-    },
+    }, 
     colors: {
         height: '90%',
     },
