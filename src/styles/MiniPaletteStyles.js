@@ -7,6 +7,12 @@ export default {
         display: 'flex',
         flexDirection: 'column',
         overflow: 'hidden',
+        position: 'relative',
+        "&:hover button": {
+            opacity: 1,
+            cursor: 'pointer',
+            backgroundColor: 'red',
+        },
     },
     miniColorBoxes: {
         marginBottom: '.3rem',
@@ -26,5 +32,19 @@ export default {
         justifyContent: 'space-between',
         padding: '.2rem 0'
         
+    },
+    deleteButton: {
+        position: 'absolute',
+        right: 0,
+        top: 0,
+        "& button": {
+            backgroundColor: 'red',
+            border: 'none',
+            color: 'white',
+            padding: '.5rem',
+            opacity: 0,
+            transition: 'all .3s ease-in',
+            outline: 'none',
+        },
     }
   };

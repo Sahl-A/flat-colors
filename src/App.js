@@ -32,8 +32,12 @@ class App extends Component {
     this.setState( {palettes: [...this.state.palettes, newPalette]} );
   }
 
-  render() {
+  // Delete palette at MiniPaltte
+  deletePalette = (id) => {
+    this.setState( st => ({palettes: st.palettes.filter(palette => palette.id !== id)}) )
+  }
 
+  render() {
     return (
       <div className="App">
         <Switch>
@@ -44,7 +48,7 @@ class App extends Component {
           <Route 
             exact 
             path="/" 
-            render={(routerProps)=> <PaletteList routerProps={routerProps} palettes={this.state.palettes}/>} />
+            render={(routerProps)=> <PaletteList routerProps={routerProps} palettes={this.state.palettes} deletePalette={this.deletePalette}/>} />
   
           <Route 
             exact 

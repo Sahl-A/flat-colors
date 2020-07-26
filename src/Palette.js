@@ -28,7 +28,7 @@ class Pallette extends Component {
                 key={color.id} 
                 name={color.name} 
                 color={color[colorFormat]}
-                colorsArr={colors}
+                colorsarr={colors}
                 showMore
                 isSingleColorBox={false}
                 singleColorPaletteURL={`/palette/${id}/${color.name.split(' ')[0]}`} />

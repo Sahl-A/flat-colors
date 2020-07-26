@@ -14,10 +14,10 @@ class ColorBox extends Component {
         setTimeout(() => {
             this.setState({copied: false})
         }, 1000);
-    }
+    } 
 
     render() {
-        const {name, color, singleColorPaletteURL, colorsArr, showMore, classes} = this.props;
+        const {name, color, singleColorPaletteURL, colorsarr, showMore, classes} = this.props;
         const {copied} = this.state;
         return(
             <div style={{background: color}} className={classes.ColorBox}>
@@ -29,7 +29,7 @@ class ColorBox extends Component {
                 <span className={classes.ColorBoxName}>{name}</span>
                 { showMore && <Link 
                     className={classes.ColorBoxMore}
-                    colorsArr={colorsArr}
+                    colorsarr={colorsarr}
                     to={`${singleColorPaletteURL}`} >
                         More
                 </Link>}

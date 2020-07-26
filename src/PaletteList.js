@@ -8,18 +8,18 @@ import Icon from '@material-ui/core/Icon';
 
 class PaletteList extends Component {
 
-    miniPaletteHandler = (id) => {
+    miniPaletteHandler = (id, palettes) => {
         this.props.routerProps.history.push(`/palette/${id}`)
     }
 
     render() {
-        const { palettes , classes } = this.props;
+        const { palettes , classes, deletePalette } = this.props;
         const miniPalettes = palettes.map(palette => (
             <div 
                 className={classes.miniPalette} 
                 key={palette.id}
-                onClick={()=>this.miniPaletteHandler(palette.id)} >
-                    <MiniPalette {...palette}/>
+                onClick={()=>this.miniPaletteHandler(palette.id, palettes)} >
+                    <MiniPalette {...palette} deletePalette={deletePalette} id={palette.id}/>
             </div>
         ))
         return(
