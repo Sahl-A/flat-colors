@@ -13,6 +13,15 @@ class App extends Component {
     palettes: seedColors,
   };
 
+  componentDidUpdate() {
+    localStorage.setItem('palettes', JSON.stringify(this.state.palettes));
+  };
+
+  componentDidMount() {
+    const storedPalettes = JSON.parse(localStorage.getItem('palettes'));
+    if (storedPalettes) this.setState({palettes: storedPalettes});  
+  };
+
   // Find palette in seedColors file
   findPalette = (id) => {
     return this.state.palettes.find(palette => palette.id === id)
@@ -20,7 +29,7 @@ class App extends Component {
 
   // Save new palette from NewPaletteForm
   saveNewPalette = (newPalette) => {
-    this.setState({palettes: [...this.state.palettes, newPalette]})
+    this.setState( {palettes: [...this.state.palettes, newPalette]} );
   }
 
   render() {
