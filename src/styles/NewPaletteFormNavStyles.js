@@ -1,6 +1,5 @@
 import { DRAWER_WIDTH as drawerWidth } from '../constants';
 
-
 export default function (theme) {
     return (
         {
@@ -39,9 +38,14 @@ export default function (theme) {
               menuButton: {
                 marginRight: theme.spacing(2),
               },
-              navBtns: {
-                
+              NavbarTitle: {
+                [theme.breakpoints.down('sm')]: {
+                  fontSize: '1rem',
+                },
               },
+              formBtns: {
+
+              }
         }
     );
 }

@@ -1,3 +1,5 @@
+import sizes from './sizesHelper';
+
 export default {
     root: {
         width: '20%',
@@ -14,6 +16,18 @@ export default {
             color: 'white',
             transform: 'scale(1.5)',
             cursor: 'pointer',
+        },
+        [sizes.down['lg']]: {
+            width: '25%',
+            height: '20%',
+        },
+        [sizes.down['md']]: {
+            width: '33.3333333333%',
+            height:'14.2857%',
+        },
+        [sizes.down['sm']]: {
+            width: '100%',
+            height:'5%',
         },
     },
     boxContent: {

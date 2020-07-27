@@ -39,25 +39,27 @@ class Navbar extends Component {
         return(
             <nav className={classes.Navbar}>
                 <Link to="/" className={classes.NavbarTitle}>reactcolorpicker</Link>
-                {showSlider && <div className={classes.Slider}>
-                    <p>level: {level}</p>
-                    <Slider 
-                        defaultValue={level} 
-                        min={100} 
-                        max={900} 
-                        step={100} 
-                        onChange={onSliderChange}/>
-                </div>}
-                <div className={classes.selectContainer}>
-                    <Select 
-                        className={classes.selectItem}
-                        onChange={this.handleChange}
-                        value={this.state.colorFormat} >
+                <div className={classes.container}>
+                    {showSlider && <div className={classes.Slider}>
+                        <p>level: {level}</p>
+                        <Slider 
+                            defaultValue={level} 
+                            min={100} 
+                            max={900} 
+                            step={100} 
+                            onChange={onSliderChange}/>
+                    </div>}
+                    <div className={classes.selectContainer}>
+                        <Select 
+                            className={classes.selectItem}
+                            onChange={this.handleChange}
+                            value={this.state.colorFormat} >
 
-                            <MenuItem value={`hex`}>Hex #FFF</MenuItem>
-                            <MenuItem value={'rgb'}>rgb(255,255,255)</MenuItem>
-                            <MenuItem value={'rgba'}>rgba(255,255,255,1)</MenuItem>
-                    </Select>
+                                <MenuItem value={`hex`}>Hex #FFF</MenuItem>
+                                <MenuItem value={'rgb'}>rgb(255,255,255)</MenuItem>
+                                <MenuItem value={'rgba'}>rgba(255,255,255,1)</MenuItem>
+                        </Select>
+                    </div>
                 </div>
                 <Snackbar
                     anchorOrigin={{

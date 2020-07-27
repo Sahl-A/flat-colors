@@ -1,7 +1,12 @@
+import sizes from './sizesHelper';
+
 export default {
     container: {
         background: 'lightblue',
         paddingBottom: '2.4rem',
+        [sizes.down['md']]: {
+            padding: '0 2rem'
+        }
     },
     root: {
         maxWidth: "50rem",

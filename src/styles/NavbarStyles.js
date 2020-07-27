@@ -1,9 +1,14 @@
+import sizes from './sizesHelper';
 export default {
     Navbar: {
         display: 'flex',
         margin: '0',
         padding: '0',
         alignItems: 'center',
+        justifyContent: 'space-between',
+        [sizes.down['sm']]: {
+            flexWrap: 'wrap',
+        },
     },
     
     NavbarTitle: {
@@ -15,9 +20,23 @@ export default {
         fontFamily: 'Roboto',
         textDecoration: 'none',
         color: 'inherit',
+        [sizes.down['xs']]: {
+            width: '100%',
+            margin: 0,
+        },
     },
-    
-        
+    container: {
+        display: 'flex',
+        [sizes.down['sm']]: {
+            width: '100%',
+            padding: '0 1rem',
+            justifyContent: 'space-between',
+        },
+        [sizes.down['xs']]: {
+            flexWrap: 'wrap',
+        },
+
+    },
     Slider: {
         width: '19rem',
         display: 'flex',
@@ -26,6 +45,9 @@ export default {
         '& p': {
             display: 'inline-block',
             width: '8rem',
+        },
+        [sizes.down['xs']]: {
+            margin: '0 auto',
         },
         '& .rc-slider-handle, .rc-slider-handle:active, .rc-slider-handle:hover, .rc-slider-handle:focus' : {
             width: '14px',
@@ -45,7 +67,11 @@ export default {
     },
     
     selectContainer: {
-        margin: '0 2rem 0 auto',
+        margin: '0 2rem',
+        [sizes.down['xs']]: {
+            margin: '1rem auto',
+            background: 'rgba(0, 0, 0, .1)',
+        },
     },
     
     selectItem : {

@@ -33,7 +33,7 @@ class NewPaletteFormNav extends Component {
                             >
                             <MenuIcon />
                             </IconButton>
-                            <h2>Create A Palette</h2>
+                            <h2 className={classes.NavbarTitle}>Create A Palette</h2>
                         </Toolbar>
                         <Link to="/" style={{marginLeft: 'auto', textDecoration: 'none'}}>
                             <Button
