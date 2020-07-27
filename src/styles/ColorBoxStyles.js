@@ -1,4 +1,5 @@
 import chroma from 'chroma-js';
+import sizes from '../styles/sizesHelper';
 
 export default {
     ColorBox: {
@@ -11,7 +12,23 @@ export default {
         color: props => chroma(props.color).luminance() >.5 ? 'black' : 'white',
         "&:hover button": {
             opacity: 1,
-        }
+        },
+        [sizes.down['lg']]: {
+            width: '25%',
+            height: props => props.isSingleColorBox? '33.3333333333%': '20%',
+        },
+        [sizes.down['md']]: {
+            width: '33.3333333333%',
+            height: props => props.isSingleColorBox? '25%': '14.2857%',
+        },
+        [sizes.down['sm']]: {
+            width: '50%',
+            height: props => props.isSingleColorBox? '20%': '10%',
+        },
+        [sizes.down['xs']]: {
+            width: '100%',
+            height: props => props.isSingleColorBox? '10%': '5%',
+        },
     },
     ColorBoxMore: {
         position: 'absolute',
@@ -59,6 +76,9 @@ export default {
             border: 'none',
             outline: 'none',
         },
+        [sizes.down['xs']]: {
+            fontSize: '.9rem',
+        },
     },
     copyMsg: {
         opacity: '0',
@@ -103,5 +123,17 @@ export default {
         transform: 'scale(10)',
         zIndex: 10,
         position: 'absolute',
+        [sizes.down['lg']]: {
+            transform: 'scale(20)'
+        },
+        [sizes.down['md']]: {
+            transform: 'scale(20)'
+        },
+        [sizes.down['sm']]: {
+            transform: 'scale(25)'
+        },
+        [sizes.down['xs']]: {
+            transform: 'scale(50)'
+        },
     },
   };

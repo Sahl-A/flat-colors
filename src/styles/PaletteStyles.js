@@ -1,3 +1,4 @@
+import sizes from './sizesHelper'
 export default {
     Palette: {
         height: '100%',
@@ -18,6 +19,22 @@ export default {
     goBackContainer: {
         backgroundColor: 'black',
         color: 'rgba(255, 255, 255, .8)',
+        [sizes.down['lg']]: {
+            width: '75%',
+            height: '33.3333333333%'
+        },
+        [sizes.down['md']]: {
+            width: '100%',
+            height: '25%'
+        },
+        [sizes.down['sm']]: {
+            width: '50%',
+            height: '20%'
+        },
+        [sizes.down['xs']]: {
+            width: '100%',
+            height: '10%'
+        },
     },
     goBack: {
         position: 'absolute',
@@ -31,6 +48,8 @@ export default {
         lineHeight: '30px',
         transition: 'all .3s ease-in-out',
         textDecoration: 'none',
-        color: 'rgba(255, 255, 255, .8)'
+        color: 'rgba(255, 255, 255, .8)',
+
+        
     },
 }
