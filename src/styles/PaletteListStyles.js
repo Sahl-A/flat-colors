@@ -1,8 +1,10 @@
 import sizes from './sizesHelper';
+import image from './background.svg'
 
 export default {
     container: {
-        background: 'lightblue',
+        backgroundColor: '#2c7aaa',
+        backgroundImage: `url(${image})`,
         paddingBottom: '2.4rem',
         [sizes.down['md']]: {
             padding: '0 2rem'
