@@ -31,7 +31,7 @@ class Navbar extends Component {
     }
 
     closeSnackBarHandle = () => {
-        this.setState({snackBarOpen: false})
+        this.setState({snackBarOpen: false});
     }
 
     render() {
