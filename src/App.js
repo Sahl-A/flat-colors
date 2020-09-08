@@ -53,7 +53,7 @@ class App extends Component {
             path="/Palette/:id" 
         >
               {({match}) => (
-                <CSSTransition in={match !==null} timeout={500} unmountOnExit classNames="page">
+                <CSSTransition in={match !==null} timeout={500} mountOnEnter unmountOnExit classNames="page">
                   {match? <Pallette {...generatePalette(this.findPalette(match.params.id))}/>: <React.Fragment></React.Fragment>}
                 </CSSTransition>
               )}
@@ -73,7 +73,7 @@ class App extends Component {
           path="/" 
         >
             {(routerProps) => (
-                <CSSTransition in={routerProps.match !==null} timeout={500} unmountOnExit classNames="page">
+                <CSSTransition in={routerProps.match !==null} timeout={500} mountOnEnter unmountOnExit classNames="page">
                   <PaletteList routerProps={routerProps} palettes={this.state.palettes} deletePalette={this.deletePalette}/>
                 </CSSTransition>
               )}

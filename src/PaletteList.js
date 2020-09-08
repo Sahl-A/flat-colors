@@ -16,7 +16,7 @@ class PaletteList extends Component {
     render() {
         const { palettes , classes, deletePalette } = this.props;
         const miniPalettes = palettes.map(palette => (
-            <CSSTransition key={palette.id} in={true} appear timeout={500} mountOnEnter={false} unmountOnExit={false} classNames="fade">
+            <CSSTransition key={palette.id} in={true} appear timeout={500} classNames="fade">
                     <div 
                         className={ classes.miniPalette }
                         key={palette.id}

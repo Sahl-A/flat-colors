@@ -25,8 +25,9 @@ body {
   height: 100vh;
 }
 .page-exit-active {
+  background: '#2c7aaa';
   transform: translateX(1250px);
-  transition: transform .5s;
+  transition: all .5s;
   height: 100vh;
 }
 
